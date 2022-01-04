@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- <div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for user in users %}
+    <div class="col">
+      <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ user[0].first_name }} {{ user[0].last_name }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Class of {{ user[1].graduation_year }}</h6>
+          <p class="card-text">Interests: {{ user[1].interests}}</p>
+          <p class="card-text">Skills: {{ user[1].skills }}</p>
+          <a href="mailto:yairgritzman@gmail.com"><p>Contact</p></a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</div> -->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Organization Name</th>
+      <th scope="col">Hours</th>
+      <th scope="col">Activity</th>
+      <th scope="col">Verified</th>
+      <th scope="col">Notes</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for record in records %}
+    <tr>
+      <th scope="row" id="time{{record.id}}">{{ record.date }}</th>
+      <td>{{ record.organization_name }}</td>
+      <td>{{ record.hours }}</td>
+      <td>{{ record.activity }}</td>
+      <td>{{ record.is_verified }}</td>
+      <td>{{ record.supervisor_notes }}</td>
+    </tr>
+    <script>
+      var time = document.getElementById('time' + {{record.id}}).innerHTML;
+      var old_date = new Date(time + ' UTC');
+      document.getElementById('time' + {{record.id}}).innerHTML = old_date.toLocaleDateString();
+    </script>
+    {% endfor %}
+  </tbody>
+</table>
+<p>Total: {{sum}} Hours</p>
+{% endblock %}

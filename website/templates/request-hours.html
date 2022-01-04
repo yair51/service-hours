@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST">
+    <div class="row mb-3">
+        <div class="col">
+            <label for="org-name" class="form-label">Organization Name</label>
+          <input type="text" class="form-control" placeholder="Organization name" aria-label="Enter organization name" name="org-name" id="org-name" required>
+        </div>
+        <div class="col">
+            <label for="hours" class="form-label">Hours</label>
+          <input type="number" class="form-control" placeholder="Enter number of hours" aria-label="Last name" name="hours" id="hours" required>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+            <label for="activity" class="form-label">Activity</label>
+          <input type="text" class="form-control" placeholder="Description of activity" aria-label="Description of activity" name="activity" id="activity" required>
+        </div>
+        <div class="col">
+            <label for="supervisor-email" class="form-label">Supervisor Email</label>
+          <input type="text" class="form-control" placeholder="Enter supervisor email" aria-label="Last name" name="supervisor-email" id="supervisor-email" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="margin-bottom: 20px">Submit</button>  
+</form>
+{% endblock %}

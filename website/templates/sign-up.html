@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+    </div>
+    <div class="mb-3">
+        <label for="fname" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter first name" required>
+      </div>
+      <div class="mb-3">
+        <label for="lname" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter last name" required>
+      </div>
+      <div class="mb-3">
+        <label for="password1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter password" required>
+      </div>
+    <div class="mb-3">
+      <label for="password2" class="form-label">Confirm Password</label>
+      <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm password" required>
+    </div>
+    <div class="mb-3">
+      <label for="grad-year" class="form-label">Graduation Year</label>
+      <select class="form-select" aria-label="Default select example" id="grad-year" name="grad-year" required>
+        <option value="" selected disabled>-- select a year --</option>
+        <!-- <option value="2021">2021</option> -->
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+      </select>
+    </div>
+  
+    <!-- <div class="mb-3">
+      <label for="interests" class="form-label">Interests</label>
+      <input type="text" class="form-control" id="interests" name="interests" placeholder="Enter your interests" required>
+    </div>
+    <div class="mb-3">
+      <label for="skills" class="form-label">Skills</label>
+      <input type="text" class="form-control" id="skills" name="skills" placeholder="Enter your skills" required>
+    </div> -->
+    <button type="submit" class="btn btn-primary" style="margin-bottom: 20px">Submit</button>  
+  </form>
+{% endblock %}
