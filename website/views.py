@@ -21,9 +21,11 @@ def home():
     # gets all of the records for the current student
     #if current_user.is_authenticated:
     sum = db.session.query(func.sum(Record.hours).filter(Record.student_id==current_user.id).label("sum"))
+    verified_sum = db.session.query(func.sum(Record.hours).filter(Record.student_id==current_user.id, Record.is_verified==True).label("sum"))
     sum = sum.scalar()
+    verified_sum = verified_sum.scalar()
     records = Record.query.filter_by(student_id=current_user.id)
-    return render_template("index.html", title="Home", user=current_user, records=records, sum=sum)
+    return render_template("index.html", title="Home", user=current_user, records=records, sum=sum, verified_sum=verified_sum)
 
 @views.route("/request-hours", methods=['GET', 'POST'])
 @views.route("/request-hours/", methods=['GET', 'POST'])
