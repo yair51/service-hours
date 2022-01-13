@@ -49,19 +49,25 @@ def request_hours():
         flash("Your request has  been submitted.", category="success")
         record_id = new_record.id
         token = s.dumps(supervisor_email)
-        link = url_for('views.verify_hours', token=token, record_id=record_id, _external=True)
+        link = url_for('views.verify_hours', token=token, record_id=record_id, hours=hours, activity=activity, org_name=org_name, student_name=current_user.full_name, _external=True)
         msg = Message("Verify Service Hours",
                   sender="gritzpython@gmail.com",
                   recipients=["yairgritzman@gmail.com"])
         msg.body = "{} is requesting community service hours. Please click the link to verify: {}".format(current_user.full_name, link)
         #msg.html = ""
         mail.send(msg)
+        print(link)
         records = Record.query.filter_by(student_id=current_user.id)
         return redirect(url_for("views.home"))
     return render_template("request-hours.html", title="Request Hours", user=current_user)
 
 @views.route('/verify-hours/<token>/<int:record_id>', methods=['GET', 'POST'])
 def verify_hours(token, record_id):
+    # get details of community service job from parameters
+    student_name = request.args.get("student_name")
+    org_name = request.args.get("org_name")
+    hours = request.args.get("hours")
+    activity = request.args.get("activity")
     current_record = Record.query.get(record_id)
     if request.method == "POST":
         isValid = request.form.get("isValid")
@@ -77,7 +83,7 @@ def verify_hours(token, record_id):
         return "Thank you for your response!"
     email = s.loads(token)
     # current_record.is_verified = True
-    return render_template("verify-hours.html", user=current_user, title="Verify Hours")
+    return render_template("verify-hours.html", user=current_user, title="Verify Hours", student_name=student_name, org_name=org_name, activity=activity, hours=hours)
 
 # adds the admin view
 admin.add_view(ModelView(Student, db.session))

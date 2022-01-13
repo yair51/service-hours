@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="verification-text" style="">
-    <p><b>Yair Gritzman</b> is requesting <b>15</b> Hours from <b>Report That Pantry</b>. </p>
-    <p>Description of activity: <b>cutting the trees</b></p>
+    <p><b>{{student_name}}</b> is requesting <b>{{hours}}</b> Hours from <b>{{org_name}}</b>. </p>
+    <p>Description of activity: <b>{{activity}}</b></p>
     <p>Is this information correct?</p>
 </div>
 <form method="POST">

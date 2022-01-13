@@ -16,8 +16,8 @@ class Config(object):
     MAIL_USE_SSL = True
     MAIL_USERNAME = os.getenv("MAIL_USERNAME", None)
     MAIL_PASSWORD = os.getenv("MAIL_PASSWORD", None)
-    GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", None)
-    GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", None)
+    GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID", None)
+    GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET", None)
     GOOGLE_DISCOVERY_URL = (
     "https://accounts.google.com/.well-known/openid-configuration"
 )

@@ -25,6 +25,7 @@
       <th scope="col">Activity</th>
       <th scope="col">Verified</th>
       <th scope="col">Notes</th>
+      <th scope="col">Supervisor Email</th>
 
     </tr>
   </thead>
@@ -37,6 +38,7 @@
       <td>{{ record.activity }}</td>
       <td>{{ record.is_verified }}</td>
       <td>{{ record.supervisor_notes }}</td>
+      <td>{{ record.supervisor_email }}</td>
     </tr>
     <script>
       var time = document.getElementById('time' + {{record.id}}).innerHTML;
